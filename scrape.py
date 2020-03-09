@@ -16,10 +16,13 @@ hotel_list = hotel_col.find('section', id="").div.ol
 hotel_data = hotel_list.find_all('li', class_="hotel sponsored")
 
 for hotel in hotel_data:
-    data = hotel.article.section.div
-    price = hotel.aside.div.a.ins.text
+
+    data = hotel.article.section.div                                        # div tag with hotel data
+    price = hotel.aside.div.a.ins.text                                      # aside tag with price data
+    #next_page_url = "in.hotels.com" + str(hotel.artcile.a['href'])          # url for the hotel specific page
+
+
     hotel_name = data.h3.text
-    #next_page_url = "in.hotels.com" + str(hotel_data.h3.a['href'])
     #print(next_page_url)
 
     #star_html = requests.get(next_page_url)
@@ -46,3 +49,15 @@ for hotel in hotel_data:
     print("Price of Room: " + str(price[2:]))
     print("")
     #print(landmarks.prettify())
+
+with open("next.html") as next_page:
+    next = BeautifulSoup(next_page, 'lxml')
+
+body = next.body
+main_section = body.find('div', class_="resp-section").main
+resp_row = main_section.find('div', class_="resp-row clearfix dateful")
+resp_row = resp_row.find('div', class_="clearfix col-24-24").div.div.div
+rating = resp_row.find('span', class_="star-rating-text widget-star-rating-overlay widget-tooltip widget-tooltip-responsive widget-tooltip-ignore-touch")
+rating = rating.span.text
+print(rating)
+
