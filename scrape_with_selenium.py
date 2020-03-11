@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import pandas as pd
+import time
 
 # aside tag used for hotel_price because <div class="price"> is not used for soldout hotels
 # dictionary with required data and respective tags
@@ -41,7 +42,7 @@ def get_mainsoup_obj(url):
     driver.get(url)
     driver.maximize_window()
 
-    '''has_loaded_count = 0
+    has_loaded_count = 0
     while True:
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         loading = driver.find_element_by_id("listings-loading")
@@ -64,7 +65,7 @@ def get_mainsoup_obj(url):
 
         if has_loaded_count > 20:
             break
-'''
+
     innerHTML = driver.execute_script("return document.body.innerHTML")
     soup = BeautifulSoup(innerHTML, 'lxml')
     driver.close()
@@ -94,22 +95,6 @@ def get_raw_dataframe(checkin, checkout, source_soup):
     reviews = get_soup_by_class(source_soup, hotel_features_html["hotel_reviews"][0],
                                 hotel_features_html["hotel_reviews"][1])
 
-    print("--------names-----------")
-    print(names)
-    print(len(names))
-    print("---------details--------------")
-    print(details)
-    print(len(details))
-    print("---------prices------------")
-    print(price)
-    print(len(price))
-    print("---------reviews-----------")
-    print(reviews)
-    print(len(reviews))
-    print("-----------landmarks-----------")
-    print(landmarks)
-    print(len(landmarks))
-
     # create a list of same checkins and checkouts for all hotels to be entered in the data frame
     checkin_dates = [checkin] * len(names)
     checkout_dates = [checkout] * len(names)
@@ -125,10 +110,6 @@ def get_raw_dataframe(checkin, checkout, source_soup):
     return hotel_df
 
 
-url = generate_url_from_dates("london", "2020-03-13", "2020-03-14")
-source = get_mainsoup_obj(url)
-dataframe = get_raw_dataframe("2020-03-13", "2020-03-14", source)
-
 list_checkin = ['2020-03-11', '2020-03-12', '2020-03-13', '2020-03-14', '2020-03-15', '2020-03-16',
                 '2020-03-17', '2020-03-18', '2020-03-19']
 list_checkout = ['2020-03-12', '2020-03-13', '2020-03-14', '2020-03-15', '2020-03-16', '2020-03-17',
@@ -138,3 +119,22 @@ dates = []
 for checkin, checkout in zip(list_checkin, list_checkout):
     dates.append((checkin, checkout))
 
+# empty data frame created for concating with data frames of different dates together
+final_dataframe = pd.DataFrame()
+
+for date in dates:
+    url = generate_url_from_dates("london", date[0], date[1])
+    print(".....url for checkin: " + str[date[0]] +"generated.....")
+    source = get_mainsoup_obj(url)
+    print(".....Scrolled and soup gathered......")
+    dataframe = get_raw_dataframe(date[0], date[1])
+    print("....dataframe created......")
+    final_dataframe = pd.concat([final_dataframe, dataframe], ignore_index=True)
+    print("-------checkin: " + str(date[0]) + "completed-------")
+
+
+print("------Saving as Pickle------")
+final_dataframe.to_pickle("london_final_raw_data.pkl", protocol=3)
+print("SAVED")
+df2 = pd.read_pickle("london_final_raw_data.pkl")
+print("loaded")
