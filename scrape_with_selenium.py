@@ -3,6 +3,7 @@ import requests
 from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
+import pandas as pd
 
 hotel_features_html = {
     "hotel_name": ("h3", "p-name"),
@@ -10,7 +11,7 @@ hotel_features_html = {
     "hotel_details": ("div", "additional-details resp-module"),
     "hotel_reviews": ("div", "details resp-module"),
     "hotel_TA_rating": ("div", "ta-logo"),
-    "hotel_price": ("aside", "pricing resp-module")
+    "hotel_price": ("div", "price")
 }
 
 
@@ -55,23 +56,43 @@ def get_mainsoup_obj(url):
     return soup
 
 
+# function to scrape data from given bs4 object
 def get_soup_by_class(soup, tag, class_):
     raw_soup = soup.find_all(tag, {'class': class_})
     raw_list = [element.text for element in raw_soup]
     return raw_list
 
 
-if __name__ == "__main__":
-    source_soup = get_mainsoup_obj("https://in.hotels.com/search.do?resolved-location=CITY%3A549499%3AUNKNOWN%3AUNKNOWN&destination-id=549499&q-destination=London,%20England,%20United%20Kingdom&q-check-in=2020-03-08&q-check-out=2020-03-09&q-rooms=1&q-room-0-adults=1&q-room-0-children=0&sort-order=BEST_SELLER")
-    print(source_soup)
+def get_raw_dataframe(checkin, checkout, source_soup):
 
+    # create list of dataframe headers for hotel dataframe
+    headers = ['name', 'hotel_details', 'review_box', 'price', 'checkin_date', 'checkout_date']
+
+    # scrap name, details, price and reviews from website
     names = get_soup_by_class(source_soup, hotel_features_html["hotel_name"][0], hotel_features_html["hotel_name"][1])
-    details = get_soup_by_class(source_soup, hotel_features_html["hotel_details"][0], hotel_features_html["hotel_details"][1])
+    details = get_soup_by_class(source_soup, hotel_features_html["hotel_details"][0],
+                                hotel_features_html["hotel_details"][1])
     price = get_soup_by_class(source_soup, hotel_features_html["hotel_price"][0], hotel_features_html["hotel_price"][1])
+    reviews = get_soup_by_class(source_soup, hotel_features_html["hotel_reviews"][0],
+                                hotel_features_html["hotel_reviews"][1])
+
     print("--------names-----------")
     print(names)
     print("---------details--------------")
     print(details)
     print("---------prices------------")
     print(price)
+    print("---------landmarks------------")
+    print("---------reviews-----------")
+    print(reviews)
+
+    # create python dictionary from scraped data
+    hotel_dict = dict(zip(headers, [names, details, reviews, price, checkin, checkout]))
+
+    # create pandas data from from the dictionary
+    hotel_df = pd.DataFrame(hotel_dict)
+
+    print(hotel_df.shape)
+    print(hotel_df.head())
+    return hotel_df
 
