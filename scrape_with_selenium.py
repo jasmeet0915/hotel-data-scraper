@@ -53,11 +53,9 @@ def get_mainsoup_obj(url):
 
             try:
                 if loading.value_of_css_property("display") == "block":
-                    print("..loading..")
                     has_loaded_count = 0
                 else:
-                    print("loaded")
-                    time.sleep(0.05)
+                    time.sleep(0.04)
                     has_loaded_count = has_loaded_count + 1
                     break
             except:
@@ -69,6 +67,9 @@ def get_mainsoup_obj(url):
     innerHTML = driver.execute_script("return document.body.innerHTML")
     soup = BeautifulSoup(innerHTML, 'lxml')
     driver.close()
+    soup_text = soup.text
+    file = open("source.html", "a")
+    file.write(soup_text)
     return soup
 
 
@@ -110,10 +111,10 @@ def get_raw_dataframe(checkin, checkout, source_soup):
     return hotel_df
 
 
-list_checkin = ['2020-03-11', '2020-03-12', '2020-03-13', '2020-03-14', '2020-03-15', '2020-03-16',
-                '2020-03-17', '2020-03-18', '2020-03-19']
-list_checkout = ['2020-03-12', '2020-03-13', '2020-03-14', '2020-03-15', '2020-03-16', '2020-03-17',
-                 '2020-03-18', '2020-03-19', '2020-03-20']
+list_checkin = ['2020-04-11', '2020-04-12', '2020-04-13', '2020-04-14', '2020-04-15', '2020-04-16',
+                '2020-04-17', '2020-04-18', '2020-04-19']
+list_checkout = ['2020-04-12', '2020-04-13', '2020-04-14', '2020-04-15', '2020-04-16', '2020-04-17',
+                 '2020-04-18', '2020-04-19', '2020-04-20']
 
 dates = []
 for checkin, checkout in zip(list_checkin, list_checkout):
@@ -124,10 +125,10 @@ final_dataframe = pd.DataFrame()
 
 for date in dates:
     url = generate_url_from_dates("london", date[0], date[1])
-    print(".....url for checkin: " + str[date[0]] +"generated.....")
+    print(".....url for checkin: " + str(date[0]) +"generated.....")
     source = get_mainsoup_obj(url)
     print(".....Scrolled and soup gathered......")
-    dataframe = get_raw_dataframe(date[0], date[1])
+    dataframe = get_raw_dataframe(date[0], date[1], source)
     print("....dataframe created......")
     final_dataframe = pd.concat([final_dataframe, dataframe], ignore_index=True)
     print("-------checkin: " + str(date[0]) + "completed-------")
