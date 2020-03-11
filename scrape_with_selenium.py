@@ -1,18 +1,16 @@
 from bs4 import BeautifulSoup
-import requests
 from selenium import webdriver
-import time
-from selenium.webdriver.common.keys import Keys
 import pandas as pd
 
+# aside tag used for hotel_price because <div class="price"> is not used for soldout hotels
 # dictionary with required data and respective tags
 hotel_features_html = {
     "hotel_name": ("h3", "p-name"),
-    "hotel_landmarks": ("ul", "property-lanmarks"),
+    "hotel_landmarks": ("ul", "property-landmarks"),
     "hotel_details": ("div", "additional-details resp-module"),
     "hotel_reviews": ("div", "details resp-module"),
     "hotel_TA_rating": ("div", "ta-logo"),
-    "hotel_price": ("div", "price")
+    "hotel_price": ("aside", "pricing resp-module")
 }
 
 
@@ -90,22 +88,34 @@ def get_raw_dataframe(checkin, checkout, source_soup):
     names = get_soup_by_class(source_soup, hotel_features_html["hotel_name"][0], hotel_features_html["hotel_name"][1])
     details = get_soup_by_class(source_soup, hotel_features_html["hotel_details"][0],
                                 hotel_features_html["hotel_details"][1])
+    landmarks = get_soup_by_class(source_soup, hotel_features_html["hotel_landmarks"][0],
+                                  hotel_features_html["hotel_landmarks"][1])
     price = get_soup_by_class(source_soup, hotel_features_html["hotel_price"][0], hotel_features_html["hotel_price"][1])
     reviews = get_soup_by_class(source_soup, hotel_features_html["hotel_reviews"][0],
                                 hotel_features_html["hotel_reviews"][1])
 
     print("--------names-----------")
     print(names)
+    print(len(names))
     print("---------details--------------")
     print(details)
+    print(len(details))
     print("---------prices------------")
     print(price)
-    print("---------landmarks------------")
+    print(len(price))
     print("---------reviews-----------")
     print(reviews)
+    print(len(reviews))
+    print("-----------landmarks-----------")
+    print(landmarks)
+    print(len(landmarks))
+
+    # create a list of same checkins and checkouts for all hotels to be entered in the data frame
+    checkin_dates = [checkin] * len(names)
+    checkout_dates = [checkout] * len(names)
 
     # create python dictionary from scraped data
-    hotel_dict = dict(zip(headers, [names, details, reviews, price, checkin, checkout]))
+    hotel_dict = dict(zip(headers, [names, details, reviews, price, landmarks, checkin_dates, checkout_dates]))
 
     # create pandas data from from the dictionary
     hotel_df = pd.DataFrame(hotel_dict)
@@ -115,4 +125,16 @@ def get_raw_dataframe(checkin, checkout, source_soup):
     return hotel_df
 
 
+url = generate_url_from_dates("london", "2020-03-13", "2020-03-14")
+source = get_mainsoup_obj(url)
+dataframe = get_raw_dataframe("2020-03-13", "2020-03-14", source)
+
+list_checkin = ['2020-03-11', '2020-03-12', '2020-03-13', '2020-03-14', '2020-03-15', '2020-03-16',
+                '2020-03-17', '2020-03-18', '2020-03-19']
+list_checkout = ['2020-03-12', '2020-03-13', '2020-03-14', '2020-03-15', '2020-03-16', '2020-03-17',
+                 '2020-03-18', '2020-03-19', '2020-03-20']
+
+dates = []
+for checkin, checkout in zip(list_checkin, list_checkout):
+    dates.append((checkin, checkout))
 
