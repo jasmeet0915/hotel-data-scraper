@@ -7,7 +7,7 @@ soup = BeautifulSoup(source, 'lxml')
 print("source downloaded")
 
 body = soup.body
-hotels_div = body.find('div', class_="resp-section")
+'''hotels_div = body.find('div', class_="resp-section")
 main = hotels_div.find('main', class_="inner-section")
 search_results = main.find('div', class_="resp-row", id="search-results")
 hotel_col = search_results.find('div', class_="resp-col main").div
@@ -21,15 +21,17 @@ hotel_data = hotel_list.find_all('li')
 for hotel in hotel_data:
     print(hotel['class'][0])
 
-    if "hotel" in hotel['class'][0]:
-        data = hotel.article.section.div            # div tag with hotel data
+    if "hotel sponsored" in hotel['class'][0] or "hotel" in hotel['class'][0]:
+        data = hotel.article.section.div                                                    # div tag with hotel data
+
         if hotel.aside.div is None:
             price = "0"
         else:
-            price = hotel.aside.div.a.ins.text[2:]                                                     # aside tag with price data
+            price = hotel.aside.div.ins.text[2:]                                                     # aside tag with price data
+
         next_page_url = "in.hotels.com" + str(hotel.article.section.div.h3.a['href'])          # hotel specific page url
 
-        '''star_html = requests.get(next_page_url)
+        star_html = requests.get(next_page_url)
         star_soup = BeautifulSoup(star_html, 'lxml')
         print(star_soup.prettify())
         star_body = star_soup.body
@@ -38,7 +40,7 @@ for hotel in hotel_data:
         resp_row = resp_row.find('div', class_="clearfix col-24-24").div.div.div
         rating = resp_row.find('span', class_="star-rating-text widget-star-rating-overlay widget-tooltip widget-tooltip-responsive widget-tooltip-ignore-touch")
         rating = rating.span.text
-    '''
+
 
 
         hotel_name = data.h3.text
@@ -67,5 +69,8 @@ for hotel in hotel_data:
 
 with open("next.html") as next_page:
     next = BeautifulSoup(next_page, 'lxml')
+'''
 
-
+names_tags = body.find_all("h3", class_="p-name")
+names = [name.text for name in names_tags]
+print(names)
