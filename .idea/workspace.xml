@@ -33,28 +33,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interactive_Harry_Potter_Wand" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Python.scrape_with_selenium">
-    <configuration name="create_sourcehtml" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="untitled" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/create_sourcehtml.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.tets">
     <configuration name="scrape" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,13 +118,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="tets" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="untitled" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tets.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.tets" />
         <item itemvalue="Python.scrape_with_selenium" />
         <item itemvalue="Python.scrape" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.scrape_stars" />
-        <item itemvalue="Python.create_sourcehtml" />
       </list>
     </recent_temporary>
   </component>
@@ -167,32 +167,32 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="471" y="101" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583771723074" />
-    <state width="1343" height="161" key="GridCell.Tab.0.bottom" timestamp="1583950818203">
+    <state width="1343" height="161" key="GridCell.Tab.0.bottom" timestamp="1583952782175">
       <screen x="0" y="0" width="2732" height="768" />
     </state>
     <state width="1343" height="161" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583758914039" />
-    <state width="1343" height="161" key="GridCell.Tab.0.bottom/0.0.2732.768@0.0.2732.768" timestamp="1583950818203" />
+    <state width="1343" height="161" key="GridCell.Tab.0.bottom/0.0.2732.768@0.0.2732.768" timestamp="1583952782175" />
     <state width="1343" height="161" key="GridCell.Tab.0.bottom/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1583849874833" />
     <state width="1343" height="161" key="GridCell.Tab.0.bottom/0.1.1366.766@0.1.1366.766" timestamp="1583655599143" />
-    <state width="1343" height="161" key="GridCell.Tab.0.center" timestamp="1583950818202">
+    <state width="1343" height="161" key="GridCell.Tab.0.center" timestamp="1583952782174">
       <screen x="0" y="0" width="2732" height="768" />
     </state>
     <state width="1343" height="161" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583758914039" />
-    <state width="1343" height="161" key="GridCell.Tab.0.center/0.0.2732.768@0.0.2732.768" timestamp="1583950818202" />
+    <state width="1343" height="161" key="GridCell.Tab.0.center/0.0.2732.768@0.0.2732.768" timestamp="1583952782174" />
     <state width="1343" height="161" key="GridCell.Tab.0.center/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1583849874833" />
     <state width="1343" height="161" key="GridCell.Tab.0.center/0.1.1366.766@0.1.1366.766" timestamp="1583655599143" />
-    <state width="1343" height="161" key="GridCell.Tab.0.left" timestamp="1583950818202">
+    <state width="1343" height="161" key="GridCell.Tab.0.left" timestamp="1583952782174">
       <screen x="0" y="0" width="2732" height="768" />
     </state>
     <state width="1343" height="161" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583758914039" />
-    <state width="1343" height="161" key="GridCell.Tab.0.left/0.0.2732.768@0.0.2732.768" timestamp="1583950818202" />
+    <state width="1343" height="161" key="GridCell.Tab.0.left/0.0.2732.768@0.0.2732.768" timestamp="1583952782174" />
     <state width="1343" height="161" key="GridCell.Tab.0.left/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1583849874833" />
     <state width="1343" height="161" key="GridCell.Tab.0.left/0.1.1366.766@0.1.1366.766" timestamp="1583655599142" />
-    <state width="1343" height="161" key="GridCell.Tab.0.right" timestamp="1583950818203">
+    <state width="1343" height="161" key="GridCell.Tab.0.right" timestamp="1583952782175">
       <screen x="0" y="0" width="2732" height="768" />
     </state>
     <state width="1343" height="161" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583758914039" />
-    <state width="1343" height="161" key="GridCell.Tab.0.right/0.0.2732.768@0.0.2732.768" timestamp="1583950818203" />
+    <state width="1343" height="161" key="GridCell.Tab.0.right/0.0.2732.768@0.0.2732.768" timestamp="1583952782175" />
     <state width="1343" height="161" key="GridCell.Tab.0.right/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1583849874833" />
     <state width="1343" height="161" key="GridCell.Tab.0.right/0.1.1366.766@0.1.1366.766" timestamp="1583655599143" />
     <state x="177" y="1" key="SettingsEditor" timestamp="1583772482891">

@@ -5,6 +5,7 @@ import time
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
 
+# dictionary with required data and respective tags
 hotel_features_html = {
     "hotel_name": ("h3", "p-name"),
     "hotel_landmarks": ("ul", "property-lanmarks"),
@@ -15,6 +16,22 @@ hotel_features_html = {
 }
 
 
+# generate url for specific place and dates
+def generate_url_from_dates(city, in_date, out_date):
+    if city == "london":
+        url_london = "https://in.hotels.com/search.do?resolved-location=CITY%3A549499%3AUNKNOWN%3AUNKNOWN&destination-" \
+                    "id=549499&q-destination=London,%20England,%20United%20Kingdom&q-check-in=" + str(in_date) + "&q-" \
+                    "check-out=" + str(out_date) + "2020-03-14&q-rooms=1&q-room-0-adults=1&q-room-0-children=0"
+        return url_london
+
+    if city == "paris":
+        url_paris = "https://in.hotels.com/search.do?resolved-location=CITY%3A504261%3AUNKNOWN%3AUNKNOWN&destination-" \
+                "id=504261&q-destination=Paris,%20France&q-check-in=" + str(in_date) + "&q-" \
+                "check-out=" + str(out_date) + "&q-rooms=1&q-room-0-adults=1&q-room-0-children=0"
+        return url_paris
+
+
+# function to infinitely scroll to bottom of the page till no more hotels can be loaded and return soup of body
 def get_mainsoup_obj(url):
     # use chrome options to open the webpage with devtools automatically to keep list-loadings element in view
     options = webdriver.ChromeOptions()
@@ -63,6 +80,7 @@ def get_soup_by_class(soup, tag, class_):
     return raw_list
 
 
+# create raw data frame from scraped data
 def get_raw_dataframe(checkin, checkout, source_soup):
 
     # create list of dataframe headers for hotel dataframe
@@ -95,4 +113,6 @@ def get_raw_dataframe(checkin, checkout, source_soup):
     print(hotel_df.shape)
     print(hotel_df.head())
     return hotel_df
+
+
 
