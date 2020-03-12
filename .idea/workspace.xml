@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b9e78d8-8478-460b-a64a-c057610ad663" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_sourcehtml.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_sourcehtml.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrape_with_selenium.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrape_with_selenium.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +15,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -27,13 +31,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interactive_Harry_Potter_Wand" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="scrape" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.preprocessing">
+    <configuration name="create_sourcehtml" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -45,7 +50,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scrape.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/create_sourcehtml.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -54,7 +59,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scrape_stars" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="preprocessing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -66,7 +71,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scrape_stars.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preprocessing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,7 +122,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tets" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -129,7 +134,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tets.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -140,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.preprocessing" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.scrape_with_selenium" />
-        <item itemvalue="Python.tets" />
-        <item itemvalue="Python.scrape" />
-        <item itemvalue="Python.scrape_stars" />
+        <item itemvalue="Python.test2" />
+        <item itemvalue="Python.create_sourcehtml" />
       </list>
     </recent_temporary>
   </component>
@@ -166,57 +171,57 @@
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1692" y="148" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1583998192437" />
-    <state x="1787" y="0" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584013115305">
+    <state x="1787" y="0" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584016139292">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
-    <state x="1787" y="0" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584013115305" />
+    <state x="1787" y="0" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584016139292" />
     <state x="842" y="1" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2732.768@0.0.2732.768" timestamp="1583998039779" />
     <state x="421" y="1" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.1.1366.766@0.1.1366.766" timestamp="1583995777621" />
     <state x="471" y="101" key="FileChooserDialogImpl" timestamp="1583771723074">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="471" y="101" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583771723074" />
-    <state width="1343" height="162" key="GridCell.Tab.0.bottom" timestamp="1584012930246">
-      <screen x="1366" y="0" width="1366" height="768" />
+    <state width="1343" height="176" key="GridCell.Tab.0.bottom" timestamp="1584037307777">
+      <screen x="0" y="1" width="1366" height="766" />
     </state>
-    <state width="1343" height="161" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583758914039" />
-    <state width="1343" height="162" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584012930246" />
+    <state width="1343" height="174" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1584029827996" />
+    <state width="1343" height="160" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584024847691" />
     <state width="1343" height="160" key="GridCell.Tab.0.bottom/0.0.2732.768@0.0.2732.768" timestamp="1583998044141" />
-    <state width="1343" height="161" key="GridCell.Tab.0.bottom/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1583849874833" />
+    <state width="1343" height="176" key="GridCell.Tab.0.bottom/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1584037307777" />
     <state width="1343" height="160" key="GridCell.Tab.0.bottom/0.1.1366.766@0.1.1366.766" timestamp="1583995791106" />
-    <state width="1343" height="162" key="GridCell.Tab.0.center" timestamp="1584012930246">
-      <screen x="1366" y="0" width="1366" height="768" />
+    <state width="1343" height="176" key="GridCell.Tab.0.center" timestamp="1584037307776">
+      <screen x="0" y="1" width="1366" height="766" />
     </state>
-    <state width="1343" height="161" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583758914039" />
-    <state width="1343" height="162" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584012930246" />
+    <state width="1343" height="174" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1584029827996" />
+    <state width="1343" height="160" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584024847691" />
     <state width="1343" height="160" key="GridCell.Tab.0.center/0.0.2732.768@0.0.2732.768" timestamp="1583998044140" />
-    <state width="1343" height="161" key="GridCell.Tab.0.center/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1583849874833" />
+    <state width="1343" height="176" key="GridCell.Tab.0.center/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1584037307776" />
     <state width="1343" height="160" key="GridCell.Tab.0.center/0.1.1366.766@0.1.1366.766" timestamp="1583995791105" />
-    <state width="1343" height="162" key="GridCell.Tab.0.left" timestamp="1584012930245">
-      <screen x="1366" y="0" width="1366" height="768" />
+    <state width="1343" height="176" key="GridCell.Tab.0.left" timestamp="1584037307776">
+      <screen x="0" y="1" width="1366" height="766" />
     </state>
-    <state width="1343" height="161" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583758914039" />
-    <state width="1343" height="162" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584012930245" />
+    <state width="1343" height="174" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1584029827996" />
+    <state width="1343" height="160" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584024847691" />
     <state width="1343" height="160" key="GridCell.Tab.0.left/0.0.2732.768@0.0.2732.768" timestamp="1583998044140" />
-    <state width="1343" height="161" key="GridCell.Tab.0.left/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1583849874833" />
+    <state width="1343" height="176" key="GridCell.Tab.0.left/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1584037307776" />
     <state width="1343" height="160" key="GridCell.Tab.0.left/0.1.1366.766@0.1.1366.766" timestamp="1583995791105" />
-    <state width="1343" height="162" key="GridCell.Tab.0.right" timestamp="1584012930246">
-      <screen x="1366" y="0" width="1366" height="768" />
+    <state width="1343" height="176" key="GridCell.Tab.0.right" timestamp="1584037307776">
+      <screen x="0" y="1" width="1366" height="766" />
     </state>
-    <state width="1343" height="161" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583758914039" />
-    <state width="1343" height="162" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584012930246" />
+    <state width="1343" height="174" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1584029827996" />
+    <state width="1343" height="160" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584024847691" />
     <state width="1343" height="160" key="GridCell.Tab.0.right/0.0.2732.768@0.0.2732.768" timestamp="1583998044141" />
-    <state width="1343" height="161" key="GridCell.Tab.0.right/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1583849874833" />
+    <state width="1343" height="176" key="GridCell.Tab.0.right/0.1.1366.766/1366.0.1366.768@0.1.1366.766" timestamp="1584037307776" />
     <state width="1343" height="160" key="GridCell.Tab.0.right/0.1.1366.766@0.1.1366.766" timestamp="1583995791106" />
     <state x="177" y="1" key="SettingsEditor" timestamp="1583772482891">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="177" y="1" key="SettingsEditor/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583772482891" />
-    <state x="1366" y="0" width="1366" height="766" key="com.intellij.ide.util.TipDialog" timestamp="1583998075564">
+    <state x="1366" y="0" width="1366" height="766" key="com.intellij.ide.util.TipDialog" timestamp="1584025530461">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="345" y="170" key="com.intellij.ide.util.TipDialog/0.0.1366.768/1366.0.1366.768@0.0.1366.768" timestamp="1583745388881" />
-    <state x="1366" y="0" key="com.intellij.ide.util.TipDialog/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1583998075564" />
+    <state x="1366" y="0" key="com.intellij.ide.util.TipDialog/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1584025530461" />
     <state x="0" y="1" width="1366" height="766" key="com.intellij.ide.util.TipDialog/0.0.2732.768@0.0.2732.768" timestamp="1583849980122" />
     <state x="260" y="34" key="com.intellij.ide.util.TipDialog/0.1.1366.766@0.1.1366.766" timestamp="1583991318786" />
     <state x="1707" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583955830445">

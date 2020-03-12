@@ -1,0 +1,4 @@
+*.pkl
+*.csv
+/.idea/*
+/chromedriver_linux64/*

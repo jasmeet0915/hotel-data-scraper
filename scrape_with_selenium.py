@@ -78,38 +78,37 @@ def get_mainsoup_obj(url):
 # function to scrape data from given bs4 object
 def get_soup_by_class(soup, tag, class_):
     raw_soup = soup.find_all(tag, {'class': class_})
-    raw_list = [element.text for element in raw_soup]
-    return raw_list
+    raw_list = []
+    empty_index = None
+
+    for element in raw_soup:
+        if element.text == "":
+            empty_index = raw_soup.index(element)
+        raw_list.append(element.text)
+
+    return (raw_list, empty_index)
 
 
 # create raw data frame from scraped data
 def get_raw_dataframe(checkin, checkout, source_soup):
 
-    index_without_price = 0
     # create list of dataframe headers for hotel dataframe
     headers = ['name', 'hotel_details', 'review_box', 'price', 'checkin_date', 'checkout_date']
 
     # scrap name, details, price and reviews from website
-    names = get_soup_by_class(source_soup, hotel_features_html["hotel_name"][0], hotel_features_html["hotel_name"][1])
-    details = get_soup_by_class(source_soup, hotel_features_html["hotel_details"][0],
+    (names, _) = get_soup_by_class(source_soup, hotel_features_html["hotel_name"][0], hotel_features_html["hotel_name"][1])
+    (details, _) = get_soup_by_class(source_soup, hotel_features_html["hotel_details"][0],
                                 hotel_features_html["hotel_details"][1])
-    price = get_soup_by_class(source_soup, hotel_features_html["hotel_price"][0], hotel_features_html["hotel_price"][1])
-    reviews = get_soup_by_class(source_soup, hotel_features_html["hotel_reviews"][0],
+    (price, index_without_price) = get_soup_by_class(source_soup, hotel_features_html["hotel_price"][0], hotel_features_html["hotel_price"][1])
+    (reviews, _) = get_soup_by_class(source_soup, hotel_features_html["hotel_reviews"][0],
                                 hotel_features_html["hotel_reviews"][1])
-
-
-    for name in names:
-        if name == "Everything You Need. All Right Here. 10A":
-            index_without_price = names.index(name)
-            names.pop(index_without_price)
-            break
-    details.pop(index_without_price)
-    reviews.pop(index_without_price)
+    price.append("")
 
     print(len(names))
     print(len(details))
     print(len(price))
     print(len(reviews))
+    print(index_without_price)
 
     # create a list of same checkins and checkouts for all hotels to be entered in the data frame
     checkin_dates = [checkin] * len(names)
@@ -158,3 +157,4 @@ final_dataframe.to_pickle("london_final_raw_data.pkl", protocol=3)
 print("SAVED")
 df2 = pd.read_pickle("london_final_raw_data.pkl")
 print("loaded")
+final_dataframe.to_csv("london_final_raw_data.csv")
