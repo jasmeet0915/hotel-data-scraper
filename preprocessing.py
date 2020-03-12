@@ -4,7 +4,10 @@ headers = ['name', 'distance_to_city_centre', 'distance_to_airport', 'reviews', 
 
 df = pd.read_pickle("data.pkl")
 review_temps = [content.split('Fabulous ')[-1].split('Good ')[-1].split('Superb ')[-1].split('Exceptional ')[-1].split('Gym ')[-1].split('Conditioning')[-1].split('friendly')[-1].split('reviews')[0] for content in df['review_box']]
-review_temps = [content.split('good')[-1].split(',')[0].split('nights')[-1] for content in review_temps]
+review_temps = [content.split('good')[-1].split(',')[0].split('nights')[-1].split('review')[0] for content in review_temps]
+review_temps = [content.split(')')[-1].split('available')[-1].split('parking')[-1].split('Bathtub')[-1] for content in review_temps]
+review_temps = [content.split('transfer')[-1].split('Kitchen')[-1] for content in review_temps]
+
 
 centre = [content.split(' km')[0] for content in df['hotel_details']]
 
@@ -12,6 +15,7 @@ print(centre[1507])
 print(df['hotel_details'][1507])
 city_centre = []
 flag = 1
+
 for dist in centre:
     for char in dist:
         if char.isdigit():
@@ -28,10 +32,21 @@ print("------------------------------------")
 
 airport = [content.split("centre")[-1].split(' km')[0] for content in df['hotel_details']]
 
+airport_dist = []
+for aero in airport:
+    for char in aero:
+        if char.isdigit():
+            aero_dist = aero.split(char)[-1]
+            airport_dist.append(str(char)+str(aero_dist))
+            flag = 0
+        if flag == 0:
+            flag = 1
+            break
+
 for i in range(len(df['price'])):
     df['price'][i] = str(df['price'][i])
 
-prices = [money.split('.')[-1].split('*')[-1].split("Choose")[0].split("Cancel")[0].split('Enter')[0].split('s')[-1] for money in df['price']]
+prices = [money.split('.')[-1].split('*')[-1].split("Choose")[0].split("Cancel")[0].split('Enter')[0].split('s')[-1].split('Free')[0].split('Pay')[0] for money in df['price']]
 
 
 print(city_centre)
@@ -49,7 +64,7 @@ checkout = '2020-04-12'
 checkin_dates = [checkin] * len(df['name'])
 checkout_dates = [checkout] * len(df['name'])
 
-hotel_dict = dict(zip(headers, [df['name'], city_centre, airport, review_temps, prices, checkin_dates, checkout_dates]))
+hotel_dict = dict(zip(headers, [df['name'], city_centre, airport_dist, review_temps, prices, checkin_dates, checkout_dates]))
 
 hotel_df = pd.DataFrame(hotel_dict)
 
