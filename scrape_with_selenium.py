@@ -20,7 +20,7 @@ def generate_url_from_dates(city, in_date, out_date):
     if city == "london":
         url_london = "https://in.hotels.com/search.do?resolved-location=CITY%3A549499%3AUNKNOWN%3AUNKNOWN&destination-" \
                     "id=549499&q-destination=London,%20England,%20United%20Kingdom&q-check-in=" + str(in_date) + "&q-" \
-                    "check-out=" + str(out_date) + "2020-03-14&q-rooms=1&q-room-0-adults=1&q-room-0-children=0"
+                    "check-out=" + str(out_date) + "&q-rooms=1&q-room-0-adults=1&q-room-0-children=0"
         return url_london
 
     if city == "paris":
@@ -43,9 +43,11 @@ def get_mainsoup_obj(url):
     driver.maximize_window()
 
     has_loaded_count = 0
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
     while True:
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         loading = driver.find_element_by_id("listings-loading")
+        driver.execute_script("arguments[0].scrollIntoView();", loading)
         print("---------scrolled into view--------------")
 
         for attempt in range(20):
@@ -55,7 +57,7 @@ def get_mainsoup_obj(url):
                 if loading.value_of_css_property("display") == "block":
                     has_loaded_count = 0
                 else:
-                    time.sleep(0.04)
+                    time.sleep(0.05)
                     has_loaded_count = has_loaded_count + 1
                     break
             except:
@@ -66,10 +68,10 @@ def get_mainsoup_obj(url):
 
     innerHTML = driver.execute_script("return document.body.innerHTML")
     soup = BeautifulSoup(innerHTML, 'lxml')
+    file = open("source.html", 'a')
+    file.write(innerHTML)
+    file.close()
     driver.close()
-    soup_text = soup.text
-    file = open("source.html", "a")
-    file.write(soup_text)
     return soup
 
 
@@ -83,6 +85,7 @@ def get_soup_by_class(soup, tag, class_):
 # create raw data frame from scraped data
 def get_raw_dataframe(checkin, checkout, source_soup):
 
+    index_without_price = 0
     # create list of dataframe headers for hotel dataframe
     headers = ['name', 'hotel_details', 'review_box', 'price', 'checkin_date', 'checkout_date']
 
@@ -90,18 +93,32 @@ def get_raw_dataframe(checkin, checkout, source_soup):
     names = get_soup_by_class(source_soup, hotel_features_html["hotel_name"][0], hotel_features_html["hotel_name"][1])
     details = get_soup_by_class(source_soup, hotel_features_html["hotel_details"][0],
                                 hotel_features_html["hotel_details"][1])
-    landmarks = get_soup_by_class(source_soup, hotel_features_html["hotel_landmarks"][0],
-                                  hotel_features_html["hotel_landmarks"][1])
     price = get_soup_by_class(source_soup, hotel_features_html["hotel_price"][0], hotel_features_html["hotel_price"][1])
     reviews = get_soup_by_class(source_soup, hotel_features_html["hotel_reviews"][0],
                                 hotel_features_html["hotel_reviews"][1])
 
+
+    for name in names:
+        if name == "Everything You Need. All Right Here. 10A":
+            index_without_price = names.index(name)
+            names.pop(index_without_price)
+            break
+    details.pop(index_without_price)
+    reviews.pop(index_without_price)
+
+    print(len(names))
+    print(len(details))
+    print(len(price))
+    print(len(reviews))
+
     # create a list of same checkins and checkouts for all hotels to be entered in the data frame
     checkin_dates = [checkin] * len(names)
     checkout_dates = [checkout] * len(names)
+    print(len(checkin_dates))
+    print(len(checkout_dates))
 
     # create python dictionary from scraped data
-    hotel_dict = dict(zip(headers, [names, details, reviews, price, landmarks, checkin_dates, checkout_dates]))
+    hotel_dict = dict(zip(headers, [names, details, reviews, price, checkin_dates, checkout_dates]))
 
     # create pandas data from from the dictionary
     hotel_df = pd.DataFrame(hotel_dict)
@@ -123,15 +140,17 @@ for checkin, checkout in zip(list_checkin, list_checkout):
 # empty data frame created for concating with data frames of different dates together
 final_dataframe = pd.DataFrame()
 
+dates = [('2020-04-11', '2020-04-12')]
 for date in dates:
     url = generate_url_from_dates("london", date[0], date[1])
-    print(".....url for checkin: " + str(date[0]) +"generated.....")
+    print(url)
+    print(".....url for checkin: " + str(date[0]) +" generated.....")
     source = get_mainsoup_obj(url)
     print(".....Scrolled and soup gathered......")
     dataframe = get_raw_dataframe(date[0], date[1], source)
     print("....dataframe created......")
     final_dataframe = pd.concat([final_dataframe, dataframe], ignore_index=True)
-    print("-------checkin: " + str(date[0]) + "completed-------")
+    print("-------checkin: " + str(date[0]) + " completed-------")
 
 
 print("------Saving as Pickle------")
