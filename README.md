@@ -13,4 +13,9 @@ The project scraps London hotel data from a website and after some preprocessing
  * Linear SVM based Machine Learning
  * sklearn machine learning
  * pandas for mananging dataframes
+
+# Credits
+The project was made by:
+ * Jasmeet Singh
+ * Ishaan Jain
  
